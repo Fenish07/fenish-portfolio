@@ -904,6 +904,35 @@ h2 span,
   padding: 22px 0 0 25px;
 }
 
+.profile-photo {
+  width: min(100%, 220px);
+  margin: 0 8px 30px auto;
+  border: 1px solid hsl(var(--primary));
+  padding: 8px;
+  background: hsl(var(--primary));
+  box-shadow: 8px 8px 0 hsl(var(--accent));
+  transform: rotate(-2deg);
+}
+
+.profile-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center 20%;
+  filter: saturate(0.85) contrast(1.04);
+}
+
+.profile-photo span {
+  display: block;
+  padding-top: 8px;
+  color: hsl(var(--accent));
+  font-family: var(--app-font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .card-index {
   margin-bottom: 30px;
   color: hsl(193 56% 42%);

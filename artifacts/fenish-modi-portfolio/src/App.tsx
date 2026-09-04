@@ -255,6 +255,10 @@ function Home() {
           </Reveal>
           <Reveal className="profile-card" delay={100}>
             <div className="card-index">readme.md <span>↗</span></div>
+             <div className="profile-photo">
+               <img src="/fenish-profile.png" alt="Fenish Chetankumar Modi in a professional portrait" />
+               <span>profile / 2026</span>
+             </div>
             <p>Built and deployed a full-stack academic project integrating authentication, database design, and cloud services.</p>
             <p>Seeking a Software Development Internship to contribute to real-world engineering teams and grow as a backend/cloud developer.</p>
             <div className="card-signature"><span>FCM</span><span>last edited / 2026</span></div>

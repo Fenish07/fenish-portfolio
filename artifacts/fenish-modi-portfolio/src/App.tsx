@@ -78,14 +78,28 @@ function NotebookMark() {
   );
 }
 
-function SocialPlaceholder({ type }: { type: 'LinkedIn' | 'GitHub' }) {
+const socialLinks = {
+  LinkedIn: 'https://www.linkedin.com/in/fenish-modi/',
+  GitHub: 'https://github.com/Fenish07',
+} as const;
+
+function SocialLink({ type, location }: { type: 'LinkedIn' | 'GitHub'; location: 'hero' | 'contact' }) {
   const Icon = type === 'LinkedIn' ? Linkedin : Github;
+  const isHero = location === 'hero';
   return (
-    <button className="social-placeholder" type="button" disabled data-testid={`button-disabled-${type.toLowerCase()}`} aria-label={`${type} link not provided`}>
+    <a
+      className={isHero ? 'button-quiet social-hero-link' : 'social-placeholder'}
+      href={socialLinks[type]}
+      target="_blank"
+      rel="noreferrer"
+      data-testid={`link-${location}-${type.toLowerCase()}`}
+      aria-label={`Open Fenish's ${type} profile in a new tab`}
+    >
       <Icon size={16} strokeWidth={1.8} />
       <span>{type}</span>
-      <small>link pending</small>
-    </button>
+      {!isHero && <small>open profile</small>}
+      {isHero && <ExternalLink size={14} />}
+    </a>
   );
 }
 
@@ -207,6 +221,8 @@ function Home() {
             <Reveal delay={300} className="hero-actions">
               <button className="button-primary" type="button" onClick={() => handleNav('projects')} data-testid="button-view-projects">Explore the work <ArrowDownRight size={17} /></button>
               <a className="button-quiet" href="mailto:fenishmodi006@gmail.com" data-testid="link-email-hero">Email Fenish <Mail size={16} /></a>
+              <SocialLink type="GitHub" location="hero" />
+              <SocialLink type="LinkedIn" location="hero" />
             </Reveal>
           </div>
           <Reveal className="hero-visual" delay={180}>
@@ -360,7 +376,7 @@ function Home() {
         <Reveal className="contact-details" delay={160}>
           <div><span>Based in</span><strong>Patan, Gujarat 384265</strong></div>
           <div><span>Phone</span><strong>+91 9265361313</strong></div>
-          <div><span>Elsewhere</span><div className="social-row"><SocialPlaceholder type="LinkedIn" /><SocialPlaceholder type="GitHub" /></div></div>
+          <div><span>Elsewhere</span><div className="social-row"><SocialLink type="LinkedIn" location="contact" /><SocialLink type="GitHub" location="contact" /></div></div>
         </Reveal>
       </section>
 

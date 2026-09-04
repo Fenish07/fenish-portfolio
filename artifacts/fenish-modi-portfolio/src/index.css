@@ -1581,11 +1581,19 @@ h2 span,
   padding: 9px 10px;
   color: hsl(var(--muted-foreground));
   background: transparent;
-  cursor: not-allowed;
+  cursor: pointer;
   font-family: var(--app-font-mono);
   font-size: 0.61rem;
   text-align: left;
   opacity: 0.85;
+  text-decoration: none;
+  transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.social-placeholder:hover {
+  border-color: hsl(193 56% 42% / 0.65);
+  color: hsl(var(--primary));
+  transform: translateY(-2px);
 }
 
 .social-placeholder small {

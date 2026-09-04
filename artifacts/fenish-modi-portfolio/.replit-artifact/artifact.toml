@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Fenish Modi Portfolio"
+description = "A polished personal portfolio and resume website for Fenish Chetankumar Modi, an aspiring software developer focused on Python, Flask, backend development, and AWS cloud infrastructure."
+version = "1.0.0"
+id = "artifacts/fenish-modi-portfolio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23469
+
+[services.development]
+run = "pnpm --filter @workspace/fenish-modi-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/fenish-modi-portfolio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/fenish-modi-portfolio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23469"
+BASE_PATH = "/"
